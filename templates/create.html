@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    .container-center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        min-height: 80vh;
+        padding: 2rem;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .form-box {
+        width: 100%;
+        max-width: 500px;
+        background-color: #ffffff;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+        border: 1px solid #e0e0e0;
+    }
+
+    .form-box h1 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        color: #2c3e50;
+        text-align: center;
+    }
+
+    .form-box label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        color: #34495e;
+    }
+
+    .form-box input[type="text"],
+    .form-box input[type="email"] {
+        width: 100%;
+        padding: 10px 12px;
+        margin-bottom: 1.5rem;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 1rem;
+        transition: border 0.2s ease-in-out;
+    }
+
+    .form-box input:focus {
+        border-color: #3498db;
+        outline: none;
+    }
+
+    .btn-submit {
+        display: inline-block;
+        width: 100%;
+        padding: 12px;
+        background-color: #3498db;
+        color: white;
+        font-size: 1rem;
+        font-weight: bold;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+    }
+
+    .btn-submit:hover {
+        background-color: #2980b9;
+    }
+
+    .back-link {
+        margin-top: 1rem;
+        text-decoration: none;
+        font-weight: bold;
+        color: #2c3e50;
+    }
+
+    .back-link:hover {
+        color: #1abc9c;
+    }
+</style>
+
+<div class="container-center">
+    <div class="form-box">
+        <h1>Create User</h1>
+        <form method="post" action="{{ url_for('create') }}">
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" required>
+
+            <button type="submit" class="btn-submit">Create</button>
+        </form>
+    </div>
+    <a href="{{ url_for('index') }}" class="back-link">&larr; Back to List</a>
+</div>
+{% endblock %}

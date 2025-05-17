@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: #f9f9f9;
+    }
+
+    .center-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 80vh;
+    }
+
+    .form-card {
+        background-color: #fff;
+        padding: 2.5rem 3rem;
+        border-radius: 12px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        max-width: 500px;
+        width: 100%;
+    }
+
+    .form-title {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #2c3e50;
+        text-align: center;
+        margin-bottom: 1.8rem;
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 0.6rem;
+        font-weight: 600;
+        color: #34495e;
+    }
+
+    .form-group input {
+        width: 100%;
+        padding: 10px 12px;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        transition: border 0.2s ease-in-out;
+    }
+
+    .form-group input:focus {
+        outline: none;
+        border-color: #3498db;
+    }
+
+    .btn-submit {
+        display: block;
+        width: 100%;
+        background-color: #3498db;
+        color: #fff;
+        padding: 12px;
+        font-size: 1rem;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+    .btn-submit:hover {
+        background-color: #2980b9;
+    }
+
+    .back-link {
+        display: block;
+        text-align: center;
+        margin-top: 1rem;
+        color: #555;
+        text-decoration: none;
+        font-size: 0.95rem;
+    }
+
+    .back-link:hover {
+        color: #1abc9c;
+    }
+
+    @media (max-width: 600px) {
+        .form-card {
+            padding: 2rem;
+        }
+
+        .form-title {
+            font-size: 1.6rem;
+        }
+    }
+</style>
+
+<div class="center-wrapper">
+    <div class="form-card">
+        <div class="form-title">✏️ Edit User Info</div>
+        <form method="post" action="{{ url_for('edit', id=user.id) }}">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" name="name" id="name" value="{{ user.name }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" name="email" id="email" value="{{ user.email }}" required>
+            </div>
+
+            <button type="submit" class="btn-submit">✅ Update User</button>
+        </form>
+        <a href="{{ url_for('index') }}" class="back-link">← Back to User List</a>
+    </div>
+</div>
+{% endblock %}
